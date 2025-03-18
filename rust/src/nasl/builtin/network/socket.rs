@@ -12,7 +12,6 @@ use std::{
 
 use crate::nasl::{prelude::*, utils::function::Seconds};
 use crate::{
-    nasl::prelude::*,
     storage::items::kb::{self, KbKey},
 };
 use dns_lookup::lookup_host;
@@ -443,7 +442,7 @@ fn open_sock_tcp_vhost(
         Some(OpenvasEncaps::Ip) => None,
         // Unsupported transport layer
         None | Some(OpenvasEncaps::Max) => {
-            return Err(SocketError::UnsupportedTransportLayerUnknown(transport))
+            return Err(SocketError::UnsupportedTransportLayerUnknown(transport));
         }
         // TLS/SSL
         Some(tls_version) => match tls_version {
